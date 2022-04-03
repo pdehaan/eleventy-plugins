@@ -1,0 +1,15 @@
+{%- assign pkg = plugin.package -%}
+
+<article data-name="{{ pkg.name }}" data-version="{{ pkg.version }}" data-score="{{ plugin.score.final | to_fixed }}">
+  <h3><a href="{{ pkg.links.npm }}" target="_blank" rel="noopener noreferrer">{{ pkg.name }}</a> <small>(v{{ pkg.version }})</small></h3>
+  <p>{{ pkg.description | escape }}</p>
+  {%- if plugin.tags.size > 0 %}
+  <nav>
+    {%- for keyword in plugin.tags %}
+    <a href="/keywords/{{ keyword | slugify }}/" class="keyword">{{ keyword }}</a>
+    {%- endfor %}
+  </nav>
+  {%- endif %}
+  <p>Updated <time datetime="{{ pkg.date }}">{{ pkg.date | date_format }} ({{ pkg.date | date_relative }})</time> by <a href="/authors/{{ pkg.publisher.username | slugify }}">npm:{{ pkg.publisher.username }}</a></p>
+  <hr/>
+</article>

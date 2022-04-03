@@ -1,0 +1,14 @@
+---
+eleventyComputed:
+  title: "{{ config.keyword }} Authors"
+---
+
+{%- assign author_names = authors | keys | shuffle -%}
+
+<h2>{{ title }} <small>({{ author_names | size }})</small></h2>
+<ul>
+{% for name in author_names %}
+  {%- assign plugin_count = authors[name] | size -%}
+  <li><a href="/authors/{{ name | slugify }}/">{{ name }}</a> ({{ "plugin" | pluralize: plugin_count }})</li>
+{% endfor %}
+</ul>

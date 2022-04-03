@@ -1,0 +1,26 @@
+{
+  "name": "npms-axios",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "eleventy --quiet",
+    "serve": "eleventy --quiet --serve",
+    "fetch_data": "node fetch_data.mjs > src/_data/plugins.json",
+    "postinstall": "npm run fetch_data",
+    "pretty:src": "npx prettier src/ *.js *.mjs --write",
+    "pretty:www": "npx prettier www/ --write",
+    "test:authors": "node authors.spec",
+    "test:keywords": "node keywords.spec"
+  },
+  "keywords": [],
+  "author": "Peter deHaan <peter@deseloper.com>",
+  "license": "MPL-2.0",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0-canary.4",
+    "axios": "^0.26.1",
+    "del": "^6.0.0",
+    "lodash.shuffle": "^4.2.0",
+    "pluralize": "^8.0.0"
+  }
+}

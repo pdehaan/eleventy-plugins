@@ -1,0 +1,14 @@
+---
+eleventyComputed:
+  title: "{{ config.keyword }} Keywords"
+---
+
+{%- assign keyword_names = keywords | keys | sort -%}
+
+<h2>{{ title }} <small>({{ keyword_names | size }})</small></h2>
+<ul>
+{% for name in keyword_names %}
+  {%- assign plugin_count = keywords[name] | size -%}
+  <li><a href="/keywords/{{ name | slugify }}/" class="keyword">{{ name }}</a> ({{ "plugin" | pluralize: plugin_count }})</li>
+{% endfor %}
+</ul>

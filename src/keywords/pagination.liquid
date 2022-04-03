@@ -1,0 +1,15 @@
+---
+pagination:
+  data: keywords
+  size: 1
+  alias: keyword
+permalink: "keywords/{{ keyword | slugify }}/"
+eleventyComputed:
+  title: "{{ config.keyword }} Keyword: {{ keyword }}"
+---
+
+{%- assign keyword_plugins = keywords[keyword] | expand_plugins -%}
+{%- assign plugin_count = keyword_plugins | size -%}
+
+<h2>{{ title }} <small>({{ "plugin" | pluralize: plugin_count }})</small></h2>
+{%- render "plugin.liquid" for keyword_plugins as plugin -%}

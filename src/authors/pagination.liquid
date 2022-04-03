@@ -1,0 +1,15 @@
+---
+pagination:
+  data: authors
+  size: 1
+  alias: author
+permalink: "authors/{{ author | slugify }}/"
+eleventyComputed:
+  title: "{{ config.keyword }} Author: {{ author }}"
+---
+
+{%- assign author_plugins = authors[author] | expand_plugins -%}
+{%- assign plugin_count = author_plugins | size -%}
+
+<h2>{{ title }} <small>({{ "plugin" | pluralize: plugin_count }})</small></h2>
+{%- render "plugin.liquid" for author_plugins as plugin -%}

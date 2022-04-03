@@ -1,0 +1,10 @@
+---
+eleventyComputed:
+  title: "{{ config.keyword }} Plugins"
+---
+
+{%- assign _plugins = plugins | values | sort: "score.final" | reverse -%}
+
+<h2>{{ title }} <small>({{ _plugins | size }})</small></h2>
+
+{%- render "plugin.liquid" for _plugins as plugin -%}
