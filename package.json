@@ -1,7 +1,6 @@
 {
   "name": "npms-axios",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "build": "eleventy --quiet",
@@ -22,5 +21,6 @@
     "del": "^6.0.0",
     "lodash.shuffle": "^4.2.0",
     "pluralize": "^8.0.0"
-  }
+  },
+  "description": ""
 }
